@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script>
+      const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+      if (currentUser) {
+        window.location.replace("/shop");
+      }
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../signup/styles.css" />
+    <link rel="shortcut icon" href="../cart.svg" type="image/jpeg" />
+    <title>login - MeShop.</title>
+  </head>
+  <body>
+    <nav>
+      <div class="brand">
+        <a href="/">MeShop.</a>
+      </div>
+      <div class="nav-items">
+        <a href="../shop/">Home</a>
+        <a href="../signup/">Signup</a>
+        <a href="../cart/">My Cart</a>
+      </div>
+    </nav>
+    <main>
+      <form action="../shop/">
+        <p>Login</p>
+        <input type="email" id="email" placeholder="Email" />
+        <p class="error emailErr">Please enter a valid email</p>
+        <input type="password" id="password" placeholder="Password" />
+        <p class="error passwordErr">
+          Password must contain atleast 8 characters
+        </p>
+        <button type="submit">Login</button>
+        <p class="feedback"></p>
+      </form>
+    </main>
+    <script src="./script.js"></script>
+  </body>
+</html>

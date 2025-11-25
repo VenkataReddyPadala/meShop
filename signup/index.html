@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script>
+      const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+      if (currentUser) {
+        window.location.replace("/shop");
+      }
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="../cart.svg" type="image/jpeg" />
+    <link rel="stylesheet" href="./styles.css" />
+    <title>Signup - MeShop.</title>
+  </head>
+  <body>
+    <nav>
+      <div class="brand">
+        <a href="/">MeShop.</a>
+      </div>
+      <div class="nav-items">
+        <a href="../shop/">Home</a>
+        <a href="../login/">Login</a>
+        <a href="../cart/">My Cart</a>
+      </div>
+    </nav>
+    <main>
+      <form action="../shop/">
+        <p>Signup</p>
+        <input type="text" id="firstName" placeholder="First Name" />
+        <p class="error firstNameErr">First Name cannot be empty</p>
+        <input type="text" id="lastName" placeholder="Last Name" />
+        <p class="error lastNameErr">Last Name cannot be empty</p>
+        <input type="email" id="email" placeholder="Email" />
+        <p class="error emailErr">Please enter a valid email</p>
+        <input type="password" id="password" placeholder="Password" />
+        <p class="error passwordErr">
+          Password must contain atleast 8 characters
+        </p>
+        <input
+          type="password"
+          id="confirmPassword"
+          placeholder="Confirm Password"
+        />
+        <p class="error confirmPasswordErr">Passwords must be equal</p>
+        <button type="submit">Signup</button>
+        <p class="feedback">User already exists. Please log in instead.</p>
+      </form>
+    </main>
+    <script src="./script.js"></script>
+  </body>
+</html>

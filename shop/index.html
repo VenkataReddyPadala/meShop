@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script>
+      const hascurrentUser = JSON.parse(localStorage.getItem("currentUser"));
+      if (!hascurrentUser) {
+        window.location.replace("/");
+      }
+    </script>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="../cart.svg" type="image/jpeg" />
+    <title>MeShop.</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <nav>
+      <div class="brand">
+        <a href="/">MeShop.</a>
+      </div>
+      <div class="nav-items">
+        <a href="../shop/">Home</a>
+        <a href="../login/">Login</a>
+        <a href="../signup/">Signup</a>
+        <a href="../cart/">My Cart</a>
+        <a href="../profile/">Profile</a>
+      </div>
+    </nav>
+
+    <main>
+      <aside>
+        <section>
+          <h3>Colors</h3>
+          <ul>
+            <li>
+              <input id="red" type="checkbox" name="color" />
+              <label for="red">Red</label>
+            </li>
+            <li>
+              <input id="blue" type="checkbox" name="color" />
+              <label for="blue">Blue</label>
+            </li>
+            <li>
+              <input id="green" type="checkbox" name="color" />
+              <label for="green">Green</label>
+            </li>
+            <li>
+              <input id="black" type="checkbox" name="color" />
+              <label for="black">Black</label>
+            </li>
+            <li>
+              <input id="white" type="checkbox" name="color" />
+              <label for="white">White</label>
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h3>Sizes</h3>
+          <ul>
+            <li>
+              <input id="S" type="checkbox" name="size" />
+              <label for="S">S</label>
+            </li>
+            <li>
+              <input id="M" type="checkbox" name="size" />
+              <label for="M">M</label>
+            </li>
+            <li>
+              <input id="L" type="checkbox" name="size" />
+              <label for="L">L</label>
+            </li>
+            <li>
+              <input id="XL" type="checkbox" name="size" />
+              <label for="XL">XL</label>
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h3>Rating</h3>
+          <div class="rating">
+            <input
+              type="range"
+              id="range"
+              min="0"
+              max="5"
+              value="0"
+              list="values"
+            />
+            <span id="ratingValue">1</span>
+          </div>
+        </section>
+        <section>
+          <h3>Price Range</h3>
+          <ul>
+            <li>
+              <input id="0-25" type="checkbox" name="prange" />
+              <label for="0-25">$0 to $25</label>
+            </li>
+            <li>
+              <input id="25-50" type="checkbox" name="prange" />
+              <label for="25-50">$25 to $50</label>
+            </li>
+            <li>
+              <input id="50-100" type="checkbox" name="prange" />
+              <label for="50-100">$50 to $100</label>
+            </li>
+            <li>
+              <input id="100on" type="checkbox" name="prange" />
+              <label for="100on">$100 onwards</label>
+            </li>
+          </ul>
+          <button id="applyFilter">Apply Filter</button>
+        </section>
+      </aside>
+      <div class="main-content">
+        <input type="text" placeholder="Search" id="searchBox" />
+        <div class="filters">
+          <div class="filter active">All</div>
+          <div class="filter">Mens</div>
+          <div class="filter">Womens</div>
+          <div class="filter">Jewelery</div>
+          <div class="filter">Electronics</div>
+        </div>
+        <div class="products"></div>
+      </div>
+    </main>
+    <script src="./script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script>
+      const hascurrentUser = JSON.parse(localStorage.getItem("currentUser"));
+      if (!hascurrentUser) {
+        window.location.replace("/");
+      }
+    </script>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="../cart.svg" type="image/jpeg" />
+    <title>My Cart - MeShop</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <nav>
+      <div class="brand">
+        <a href="/">MeShop.</a>
+      </div>
+      <div class="nav-items">
+        <a href="../shop/">Home</a>
+        <a href="../profile/">Profile</a>
+      </div>
+    </nav>
+    <main>
+      <h1>My Cart</h1>
+      <div class="cart">
+        <div class="items"></div>
+        <div class="checkout"></div>
+      </div>
+    </main>
+    <script src="./script.js"></script>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  </body>
+</html>

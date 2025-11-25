@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <script>
+      const hascurrentUser = JSON.parse(localStorage.getItem("currentUser"));
+      if (!hascurrentUser) {
+        window.location.replace("/");
+      }
+    </script>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Profile - MeShop.</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="shortcut icon" href="../cart.svg" type="image/jpeg" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <nav>
+      <div class="brand">
+        <a href="/">MeShop.</a>
+      </div>
+      <div class="nav-items">
+        <a href="../shop/">Home</a>
+        <a href="../cart/">Cart</a>
+      </div>
+    </nav>
+    <main>
+      <div class="EditProfile">
+        <form>
+          <h5 id="userInfo"></h5>
+          <h1>My Profile</h1>
+          <input type="text" id="firstName" placeholder="First Name" />
+          <input type="text" id="lastName" placeholder="Last Name" />
+          <button type="submit">Save Info</button>
+          <p class="feedback">Enter First Name or Last Name</p>
+        </form>
+      </div>
+      <div class="EditPassword">
+        <form>
+          <h1>Edit Password</h1>
+          <input type="password" id="password" placeholder="Password" />
+          <p class="error passwordErr">
+            Password must contain atleast 8 characters
+          </p>
+          <input type="password" id="newPassword" placeholder="New Password" />
+          <p class="error newPasswordErr">
+            Password must contain atleast 8 characters
+          </p>
+          <input
+            type="password"
+            id="confirmPassword"
+            placeholder="New Confirm Password"
+          />
+          <p class="error confirmPasswordErr">Passwords must be equal</p>
+          <button type="submit" id="changePassBtn">Change Password</button>
+          <p class="feedback">You entered wrong password</p>
+        </form>
+      </div>
+      <button class="logout">Logout</button>
+    </main>
+    <script src="./script.js"></script>
+  </body>
+</html>

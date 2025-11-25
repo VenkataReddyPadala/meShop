@@ -1,0 +1,99 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  overflow-x: hidden;
+  /* display: none; */
+}
+img {
+  display: block;
+  width: 100%;
+}
+a {
+  color: white;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  position: sticky;
+  z-index: 100;
+  top: 0;
+
+  background-color: black;
+  border-bottom: 1px solid white;
+  padding: 1rem;
+  font-size: 1rem;
+}
+
+nav .brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+nav .nav-items a {
+  margin: 0 1rem;
+}
+main {
+  padding: 30px;
+}
+
+form > * {
+  margin-bottom: 15px;
+}
+
+form > h1 {
+  text-align: center;
+}
+
+.EditProfile > form > h5 {
+  margin: 0;
+}
+
+form > p {
+  font-size: 20px;
+}
+form > #userInfo {
+  text-align: right;
+}
+
+input {
+  border: 1px solid black;
+  padding: 10px 10px;
+  width: 100%;
+}
+
+button {
+  padding: 7px 35px;
+  border: 1px solid black;
+  cursor: pointer;
+  background-color: black;
+  color: white;
+}
+
+#changePassBtn {
+  padding: 7px 20px;
+}
+
+.error {
+  color: red;
+  display: none;
+  font-size: 12px;
+}
+.feedback {
+  display: none;
+  color: red;
+  font-size: 12px;
+}
