@@ -61,40 +61,50 @@ EditPasswordformEle.addEventListener("submit", (e) => {
 
   let hasError = false;
 
-  if (passwordEle.value.trim() === "") {
+  passwordErrEle.style.display = "none";
+  newPasswordErrEle.style.display = "none";
+  confirmPasswordErrEle.style.display = "none";
+  EditFeedbackEle.style.display = "none";
+  const passwordVal = passwordEle.value.trim();
+  const newPasswordVal = newPasswordEle.value.trim();
+  const confirmPasswordVal = newConfirmPasswordEle.value.trim();
+
+  if (passwordVal === "") {
     hasError = true;
     passwordErrEle.style.display = "block";
-  } else {
-    passwordErrEle.style.display = "none";
   }
 
-  if (newPasswordEle.value.trim() === "") {
+  if (newPasswordVal === "") {
     hasError = true;
     newPasswordErrEle.style.display = "block";
-  } else {
-    newPasswordErrEle.style.display = "none";
   }
 
-  if (
-    !validateConfirmPass(
-      newPasswordEle.value.trim(),
-      newConfirmPasswordEle.value.trim()
-    )
-  ) {
+  if (confirmPasswordVal === "") {
     hasError = true;
     confirmPasswordErrEle.style.display = "block";
-  } else {
-    confirmPasswordErrEle.style.display = "none";
   }
 
-  if (
-    (!currentUser || currentUser.password !== passwordEle.value.trim()) &&
-    !hasError
-  ) {
+  if (hasError) {
+    e.preventDefault();
+    return;
+  }
+
+  if (!validateConfirmPass(newPasswordVal, confirmPasswordVal)) {
     hasError = true;
-    EditFeedbackEle.style.display = "block";
-  } else {
+    confirmPasswordErrEle.textContent = "Passwords must be equal";
+    confirmPasswordErrEle.style.display = "block";
     EditFeedbackEle.style.display = "none";
+  } else if (!currentUser || currentUser.password !== passwordVal) {
+    hasError = true;
+    EditFeedbackEle.textContent = "You entered wrong password";
+    EditFeedbackEle.style.display = "block";
+    confirmPasswordErrEle.style.display = "none";
+  } else if (currentUser.password === newPasswordVal) {
+    hasError = true;
+    EditFeedbackEle.textContent =
+      "New password can't be the same as the old one";
+    EditFeedbackEle.style.display = "block";
+    confirmPasswordErrEle.style.display = "none";
   }
 
   if (hasError) {
@@ -104,10 +114,12 @@ EditPasswordformEle.addEventListener("submit", (e) => {
 
   const users = JSON.parse(localStorage.getItem("users")) || [];
   const newUsers = users.filter((user) => user.email !== currentUser.email);
-  currentUser.password = newPasswordEle.value.trim();
+  currentUser.password = newPasswordVal;
   localStorage.setItem("users", JSON.stringify([...newUsers, currentUser]));
   localStorage.setItem("currentUser", JSON.stringify(currentUser));
   alert("Password changed successfully");
+  localStorage.removeItem("currentUser");
+  window.location.replace("../");
 });
 
 function validateConfirmPass(pass, confirmPass) {
@@ -117,5 +129,5 @@ function validateConfirmPass(pass, confirmPass) {
 const logoutBtn = document.querySelector(".logout");
 logoutBtn.addEventListener("click", () => {
   localStorage.removeItem("currentUser");
-  window.location.replace("/");
+  window.location.replace("../");
 });
